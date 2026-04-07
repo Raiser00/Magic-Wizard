@@ -20,7 +20,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False
     ctrl = pygame.key.get_pressed()
-    pace = 5
+    pace = 2
 
     if ctrl[pygame.K_LEFT]:
         player.position[0] -= pace

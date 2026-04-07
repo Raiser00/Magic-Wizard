@@ -19,6 +19,18 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+    ctrl = pygame.key.get_pressed()
+    pace = 5
+
+    if ctrl[pygame.K_LEFT]:
+        player.position[0] -= pace
+    if ctrl[pygame.K_RIGHT]:
+        player.position[0] += pace
+    if ctrl[pygame.K_UP]:
+        player.position[1] -= pace
+    if ctrl[pygame.K_DOWN]:
+        player.position[1] += pace
+    
     # dessin
     screen.fill((30, 30, 30))  # fond noir
 

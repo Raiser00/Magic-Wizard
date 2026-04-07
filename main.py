@@ -27,15 +27,29 @@ while running:
     ctrl = pygame.key.get_pressed()
     pace = 2
 
+    next_x = player.position[0]
+    next_y = player.position[1]
+
+
+
     if ctrl[pygame.K_LEFT]:
-        player.position[0] -= pace
+        next_x -= pace
     if ctrl[pygame.K_RIGHT]:
-        player.position[0] += pace
+        next_x += pace
     if ctrl[pygame.K_UP]:
-        player.position[1] -= pace
+        next_y -= pace
     if ctrl[pygame.K_DOWN]:
-        player.position[1] += pace
+        next_y += pace
+
+    if game_map.isBlocked(next_x, next_y) and \
+        game_map.isBlocked(next_x + 39, next_y) and \
+        game_map.isBlocked(next_x, next_y + 39) and \
+        game_map.isBlocked(next_x + 39, next_y + 39):
     
+    # vérifier si la nouvelle position est valide
+        player.position[0] = next_x
+        player.position[1] = next_y
+
     # dessin
     screen.fill((30, 30, 30))  # fond noir
 

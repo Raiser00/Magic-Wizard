@@ -6,12 +6,22 @@ class Map:
         self.table = [
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
-            [1, 0, 1, 0, 0, 0, 0, 1, 0, 1],
-            [1, 0, 1, 0, 1, 1, 0, 1, 0, 1],
-            [1, 0, 1, 0, 1, 1, 0, 1, 0, 1],
+            [1, 0, 1, 1, 0, 0, 1, 1, 0, 1],
+            [1, 0, 1, 1, 0, 0, 1, 1, 0, 1],
+            [1, 0, 0, 0, 1, 1, 0, 0, 0, 1],
+            [1, 0, 0, 0, 1, 1, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         ]
         self.sizeTile = 80 # carré 80x80 pixels
+
+    def isBlocked(self, x, y):
+        column = x // self.sizeTile
+        line = y // self.sizeTile
+
+        if 0 <= line < len(self.table) and 0 <= column < len(self.table[0]):
+            return self.table[line][column] == 0
+        return False
     
     def draw(self, surface):
         for indexLine, line in enumerate(self.table):
@@ -24,5 +34,5 @@ class Map:
                 pygame.draw.rect(surface, color, (x, y, self.sizeTile, self.sizeTile))
                 #bordure
                 pygame.draw.rect(surface, (0, 0, 0), (x, y, self.sizeTile, self.sizeTile), 1)
-                
+
                 

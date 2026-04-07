@@ -6,12 +6,12 @@ class Map:
         self.table = [
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 1, 1, 0, 0, 1, 1, 0, 1],
+            [1, 0, 2, 2, 0, 0, 2, 2, 0, 1],
             [1, 0, 1, 1, 0, 0, 1, 1, 0, 1],
             [1, 0, 0, 0, 1, 1, 0, 0, 0, 1],
             [1, 0, 0, 0, 1, 1, 0, 0, 0, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
         ]
         self.sizeTile = 80 # carré 80x80 pixels
 
@@ -31,6 +31,8 @@ class Map:
                 
                 #couleur de la tuile
                 color = (50, 150, 50) if tile == 1 else (100, 100, 100)
+                if tile == 2:
+                    color = (150, 50, 50)
                 pygame.draw.rect(surface, color, (x, y, self.sizeTile, self.sizeTile))
                 #bordure
                 pygame.draw.rect(surface, (0, 0, 0), (x, y, self.sizeTile, self.sizeTile), 1)

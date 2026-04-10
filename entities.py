@@ -1,5 +1,6 @@
 import random
 
+
 class Character:
     def __init__(self, name, healthMax):
         self.name = name
@@ -19,6 +20,27 @@ class Character:
             self.exp = 0
             print(f"{self.name} monte au niveau {self.level}!")
 
+    def attemptCatch(self, monsterTarget):
+        if self.emptyCard <= 0:
+            print("tu n'as plus de cartes vides")
+            return False
+            
+        catchChance = (monsterTarget.healthMax - monsterTarget.health) / monsterTarget.healthMax
+        # pour eviter que la capture echoue à 100% de dégâts
+        if catchChance < 0.15:
+            catchChance = 0.15
+
+        attempt = random.random()
+
+        if attempt <= catchChance:
+            self.emptyCard -= 1
+            self.deck.append(monsterTarget)
+            print(f"Succès ! {monsterTarget.name} a été scéllé dans une carte.")
+            return True
+        else:
+            print(f"Échec ! {monsterTarget.name} a résisté à la capture.")
+            return False
+
 class Card:
     def __init__(self, name, attack, defense):
         self.name = name
@@ -34,7 +56,6 @@ class Monster:
         self.baseDeff = baseDeff
         self.baseRank = baseRank
         self.actualLevel = actualLevel
-
         self.healthMax = baseRank * 100
         self.health = self.healthMax
 

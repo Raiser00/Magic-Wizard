@@ -19,5 +19,11 @@ CATALOGUE_MONSTRES = {
         "atk": 300, 
         "def": 200, 
         "rank": 1
+    },
+    "Vorseraider":
+    {
+        "atk": 1900,
+        "def": 1500,
+        "rank": 4
     }
 }
